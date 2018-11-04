@@ -1,8 +1,12 @@
 {
-  "name": "postgrest-helper",
+  "name": "postgrest-syntax-builder",
   "version": "0.0.0",
   "author": "Amos Wong <amoswwj@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:amoshydra/postgrest-syntax-builder.git"
+  },
   "scripts": {
     "build": "rollup --config",
     "test": "ava"
