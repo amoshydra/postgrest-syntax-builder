@@ -3,7 +3,7 @@ import {
   isArray,
   isObject,
   isPlainObject,
-} from 'lodash';
+} from 'lodash-es';
 import {
   joinParam,
   withCondition,

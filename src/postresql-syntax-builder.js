@@ -1,6 +1,6 @@
 import {
   fromPairs,
-} from 'lodash';
+} from 'lodash-es';
 import {
   withParam,
   joinParam,
