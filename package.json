@@ -32,12 +32,5 @@
       "test/**/*.spec.js"
     ],
     "verbose": true
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env"
-      ]
-    ]
   }
 }
