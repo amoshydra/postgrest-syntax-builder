@@ -11,7 +11,7 @@ test('should return empty string when called with no parameter', t => {
   );
 });
 
-test('should return empty string if called without action', t => {
+test('should return correct key if called with action', t => {
   testIs(t)(
     p('age'),
     'age='
@@ -30,7 +30,7 @@ test('should return object form containing param and value for property method',
   t.is(output.value, 12);
 });
 
-test('should return object form containing param and value for property method', t => {
+test('should produce key value pairs with the given syntax inside reduce', t => {
   const output = p.reduce(
     p('project_id').eq(1),
     p.offset(2),
