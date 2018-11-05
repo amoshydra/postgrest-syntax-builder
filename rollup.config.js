@@ -26,7 +26,14 @@ export default {
     babel({
       include: 'src/**',
       babelrc: false,
-      presets: [['@babel/env', { modules: false }]],
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+          },
+        ],
+      ],
     }),
     minify({
       comments: false,
