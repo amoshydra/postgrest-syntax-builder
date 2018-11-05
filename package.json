@@ -1,36 +1,43 @@
 {
-  "name": "postgrest-helper",
+  "name": "postgrest-syntax-builder",
   "version": "0.0.0",
-  "main": "src/index.js",
   "author": "Amos Wong <amoswwj@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:amoshydra/postgrest-syntax-builder.git"
+  },
   "scripts": {
+    "build": "rollup --config",
     "test": "ava"
   },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash-es": "^4.17.11"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
-    "ava": "^0.25.0",
-    "eslint": "^5.8.0"
+    "ava": "^1.0.0-rc.1",
+    "eslint": "^5.8.0",
+    "esm": "^3.0.84",
+    "live-server": "^1.2.0",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0"
   },
   "ava": {
     "require": [
-      "@babel/register"
+      "esm"
     ],
     "files": [
       "test/**/*.spec.js"
     ],
     "verbose": true
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env"
-      ]
-    ]
   }
 }
