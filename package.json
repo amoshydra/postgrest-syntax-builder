@@ -4,8 +4,8 @@
   "author": "Amos Wong <amoswwj@gmail.com>",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "git@github.com:amoshydra/postgrest-syntax-builder.git"
+    "type": "git",
+    "url": "git@github.com:amoshydra/postgrest-syntax-builder.git"
   },
   "scripts": {
     "build": "rollup --config",
