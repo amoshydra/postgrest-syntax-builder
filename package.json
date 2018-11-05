@@ -1,8 +1,16 @@
 {
   "name": "postgrest-syntax-builder",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Amos Wong <amoswwj@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "postgrest",
+    "postgres",
+    "url",
+    "query",
+    "queries"
+  ],
+  "homepage": "https://github.com/amoshydra/postgrest-syntax-builder",
   "repository": {
     "type": "git",
     "url": "git@github.com:amoshydra/postgrest-syntax-builder.git"
