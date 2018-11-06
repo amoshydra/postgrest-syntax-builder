@@ -17,7 +17,9 @@
   },
   "scripts": {
     "build": "rollup --config",
-    "test": "ava",
+    "test": "yarn run test:coverage",
+    "test:coverage": "nyc --reporter=lcovonly ava",
+    "test:unit": "ava",
     "example": "live-server --open=example"
   },
   "main": "dist/index.js",
@@ -31,9 +33,11 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "ava": "^1.0.0-rc.1",
+    "codecov": "^3.1.0",
     "eslint": "^5.8.0",
     "esm": "^3.0.84",
     "live-server": "^1.2.0",
+    "nyc": "^13.1.0",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-babel-minify": "^6.1.1",

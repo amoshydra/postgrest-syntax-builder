@@ -41,6 +41,16 @@ test('should construct `and` condition', t => {
   );
 });
 
+test('should construct `or` condition', t => {
+  testIs(t)(
+    p.or(
+      p('age').gt(12),
+      p('age').lt(18),
+    ),
+    'or=(age=gt.12,age=lt.18)'
+  );
+});
+
 test('should construct simple chained `not` condition', t => {
   testIs(t)(
     p('age')
