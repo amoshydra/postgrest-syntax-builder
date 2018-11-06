@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/amoshydra/postgrest-syntax-builder.svg?style=svg)](https://circleci.com/gh/amoshydra/postgrest-syntax-builder)
 [![Known Vulnerabilities](https://snyk.io/test/github/amoshydra/postgrest-syntax-builder/badge.svg?targetFile=package.json)](https://snyk.io/test/github/amoshydra/postgrest-syntax-builder?targetFile=package.json)
 [![Maintainability](https://api.codeclimate.com/v1/badges/45829fe93b3b9e209ba4/maintainability)](https://codeclimate.com/github/amoshydra/postgrest-syntax-builder/maintainability)
+[![codecov](https://codecov.io/gh/amoshydra/postgrest-syntax-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/amoshydra/postgrest-syntax-builder)
 
 [![npm](https://nodei.co/npm/postgrest-syntax-builder.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/postgrest-syntax-builder)
 
