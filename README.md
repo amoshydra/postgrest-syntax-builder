@@ -24,6 +24,10 @@ yarn add postgrest-syntax-builder
 ```
 
 # Usage
+Live example
+
+[![Edit PostgREST Syntax Builder Example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/k3pjrzv21v?expanddevtools=1&module=%2Fsrc%2Findex.js)
+
 ## Input
 ```js
 import p from 'postgrest-syntax-builder'
