@@ -3,39 +3,79 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+fragments:
+  common-job-mixin: &common-job-mixin
+    docker:
+      - image: circleci/node:8.12
+    working_directory: ~/repo
+  common-job-steps-mixin: &common-job-steps-mixin
+    - checkout
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+    - run: yarn install
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
 jobs:
   test-job:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.12
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-
-    working_directory: ~/repo
-
+    <<: *common-job-mixin
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
+      - *common-job-steps-mixin
       - run: yarn test
+
+  build-job:
+    <<: *common-job-mixin
+    steps:
+      - *common-job-steps-mixin
+      - run: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - .gitignore
+            - .npmignore
+            - LICENSE
+            - package.json
+            - README.md
+
+  publish-job:
+    <<: *common-job-mixin
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
 workflows:
   version: 2
   test:
     jobs:
       - test-job
+  publish:
+    jobs:
+      - test-job:
+          filters: &publish-job-filters
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*/
+      - build-job:
+          requires:
+            - test-job
+          filters: *publish-job-filters
+      - publish-job:
+          requires:
+            - build-job
+          filters: *publish-job-filters
