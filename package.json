@@ -1,6 +1,6 @@
 {
   "name": "postgrest-syntax-builder",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Amos Wong <amoswwj@gmail.com>",
   "license": "MIT",
   "keywords": [
