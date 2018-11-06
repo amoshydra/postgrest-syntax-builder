@@ -1,7 +1,7 @@
 // Assign p so that this script can be used in node/umd and es environment.
 const p = (
   (typeof window !== 'undefined' && window.p)
-  || (typeof require !== 'undefined' && require('../dist/index.cjs'))
+  || (typeof require !== 'undefined' && ((global.print = require('./helpers/print-helper')), require('../dist/index.cjs')))
 );
 
 const examples = [
@@ -15,14 +15,9 @@ const examples = [
   ),
 ];
 
-console.group('\nRaw:');
-console.log(examples);
-console.groupEnd();
+const printer = print("#app");
 
-console.group('\nCompiled:');
-console.log(p.reduce(...examples));
-console.groupEnd();
-
-console.group('\nFunction:');
-console.dir(p);
-console.groupEnd();
+printer("Raw", examples);
+printer("Compiled", p.reduce(...examples));
+printer("Use as String", examples.join("\n"));
+printer("Function", p);

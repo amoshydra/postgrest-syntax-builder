@@ -87,6 +87,20 @@ yarn build
 yarn test
 ```
 
+# Run example
+After the project is built, you can test each built target.
+
+## With browser (ES module & UMD)
+```
+yarn example
+```
+
+
+## With node (CommonJS)
+```
+node example
+```
+
 # Publishing
 
 This project uses CircleCI to test, build and publish to npm registry. This workflow will be triggered whenever a new version tag is made.

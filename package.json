@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "rollup --config",
-    "test": "ava"
+    "test": "ava",
+    "example": "live-server --open=example"
   },
   "main": "dist/index.js",
   "files": [

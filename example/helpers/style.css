@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+}
+.heading {
+  font-weight: bold;
+  margin-top: 24px;
+  font-size: 1.2em;
+}
+
+pre {
+  background: #f0f0f0;
+  padding: 8px 8px;
+  line-height: 1.5;
+  font-family: monospace;
+}
