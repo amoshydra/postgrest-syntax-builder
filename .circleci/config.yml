@@ -8,16 +8,16 @@ fragments:
     docker:
       - image: circleci/node:8.12
     working_directory: ~/repo
-  common-job-steps-mixin: &common-job-steps-mixin
+  common-job-steps-mixin:
     - checkout
     # Download and cache dependencies
-    - restore_cache:
+    - restore_cache: &cache-restore-mixin
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
         # fallback to using the latest cache if no exact match is found
         - v1-dependencies-
     - run: yarn install
-    - save_cache:
+    - save_cache: &cache-save-mixin
         paths:
           - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
@@ -26,13 +26,18 @@ jobs:
   test-job:
     <<: *common-job-mixin
     steps:
-      - *common-job-steps-mixin
+      - checkout
+      - restore_cache: *cache-restore-mixin
+      - run: yarn install
+      - save_cache: *cache-save-mixin
       - run: yarn test
-
   build-job:
     <<: *common-job-mixin
     steps:
-      - *common-job-steps-mixin
+      - checkout
+      - restore_cache: *cache-restore-mixin
+      - run: yarn install
+      - save_cache: *cache-save-mixin
       - run: yarn build
       - persist_to_workspace:
           root: .
