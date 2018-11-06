@@ -1,4 +1,5 @@
-# Postgrest Syntax Builder
+# PostgREST Syntax Builder
+
 
 This library implement the "Tables and Views" section listed here: http://postgrest.org/en/v5.1/api.html
 - horizontal filtering
