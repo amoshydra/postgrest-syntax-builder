@@ -3,11 +3,16 @@ import minify from 'rollup-plugin-babel-minify';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
+const preferredDefaultOutputFormat = {
+  format: 'umd',
+  name: 'postgrestSyntaxBuilder',
+};
+
 export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/index.js',
+      file: 'dist/index.esm.js',
       format: 'esm',
     },
     {
@@ -16,8 +21,11 @@ export default {
     },
     {
       file: 'dist/index.umd.js',
-      format: 'umd',
-      name: 'postgrestSyntaxBuilder',
+      ...preferredDefaultOutputFormat,
+    },
+    {
+      file: 'dist/index.js',
+      ...preferredDefaultOutputFormat,
     },
   ],
   plugins: [
