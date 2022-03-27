@@ -27,7 +27,7 @@
     "dist"
   ],
   "dependencies": {
-    "lodash-es": "^4.17.11"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
